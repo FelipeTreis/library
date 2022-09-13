@@ -1,5 +1,17 @@
-from app.models import Book, Category, PublishingCompany
+from app.models import Author, Book, Category, PublishingCompany
 from rest_framework import serializers
+
+
+class AuthorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Author
+        fields = (
+            'id',
+            'full_name',
+            'birthday',
+        )
+
+    birthday = serializers.CharField()
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -28,5 +40,10 @@ class BookSerializer(serializers.ModelSerializer):
             'name',
             'state',
             'category',
+            'language',
+            'author',
             'publishing_company',
+            'publication_date',
         )
+
+    publication_date = serializers.CharField()

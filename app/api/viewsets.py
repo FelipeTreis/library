@@ -1,12 +1,19 @@
-from app.api.serializers import (BookSerializer, CategorySerializer,
+from app.api.serializers import (AuthorSerializer, BookSerializer,
+                                 CategorySerializer,
                                  PublishingCompanySerializer)
-from app.models import Book, Category, PublishingCompany
+from app.models import Author, Book, Category, PublishingCompany
 from rest_framework import viewsets
 from rest_framework.pagination import PageNumberPagination
 
 
 class Pagination(PageNumberPagination):
     page_size = 10
+
+
+class AuthorViewSet(viewsets.ModelViewSet):
+    queryset = Author.objects.all()
+    serializer_class = AuthorSerializer
+    pagination_class = Pagination
 
 
 class CategoryViewSet(viewsets.ModelViewSet):
