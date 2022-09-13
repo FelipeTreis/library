@@ -6,6 +6,7 @@ from app.api.choices import LANGUAGE_CHOICES, STATE_CHOICES
 class Author(models.Model):
     name = models.CharField(max_length=255, null=False, blank=False)
     surname = models.CharField(max_length=255, null=False, blank=False)
+    biography = models.TextField()
     birthday = models.DateField()
 
     @property
