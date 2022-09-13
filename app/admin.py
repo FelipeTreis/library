@@ -23,9 +23,10 @@ class PublishingCompanyAdmin(admin.ModelAdmin):
 
 @admin.register(Book)
 class BookAdmin(admin.ModelAdmin):
-    list_display = ('is_avaible', 'name', 'state', 'added_at', )
+    list_display = ('is_available', 'name', 'state', 'added_at', )
     list_display_links = ('name', )
     list_filter = ('name', 'state', 'category', 'publishing_company', )
-    list_editable = ('is_avaible', )
+    list_editable = ('is_available', )
     list_per_page = 10
     search_fields = ('name', 'state', 'category', 'publishing_company', )
+    autocomplete_fields = ('category', 'publishing_company', )
