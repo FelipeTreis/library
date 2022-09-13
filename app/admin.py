@@ -38,4 +38,4 @@ class BookAdmin(admin.ModelAdmin):
     list_editable = ('is_available', )
     list_per_page = 10
     search_fields = ('name', 'state', 'category', 'publishing_company', )
-    autocomplete_fields = ('category', 'publishing_company', )
+    autocomplete_fields = ('author', 'category', 'publishing_company', )

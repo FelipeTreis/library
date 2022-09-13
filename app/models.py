@@ -6,8 +6,7 @@ from app.api.choices import LANGUAGE_CHOICES, STATE_CHOICES
 class Author(models.Model):
     name = models.CharField(max_length=255, null=False, blank=False)
     surname = models.CharField(max_length=255, null=False, blank=False)
-    biography = models.TextField()
-    birthday = models.DateField()
+    biography = models.TextField(null=True, blank=True)
 
     @property
     def full_name(self):
@@ -40,14 +39,14 @@ class PublishingCompany(models.Model):
 class Book(models.Model):
     name = models.CharField(max_length=255, null=False, blank=False)
     category = models.ManyToManyField(Category)
-    num_pages = models.IntegerField()
+    num_pages = models.IntegerField(default=1)
     state = models.CharField(
         max_length=8, choices=STATE_CHOICES,
         null=False, blank=False
     )
     language = models.CharField(
         max_length=10, choices=LANGUAGE_CHOICES,
-        null=False, blank=False
+        null=True, blank=False
     )
     author = models.ManyToManyField(Author)
     publishing_company = models.ForeignKey(
@@ -55,7 +54,6 @@ class Book(models.Model):
         null=True, blank=True
     )
     is_available = models.BooleanField(default=False)
-    publication_date = models.DateField()
 
     def __str__(self):
         return self.name

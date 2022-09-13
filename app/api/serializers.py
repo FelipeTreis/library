@@ -8,10 +8,7 @@ class AuthorSerializer(serializers.ModelSerializer):
         fields = (
             'id',
             'full_name',
-            'birthday',
         )
-
-    birthday = serializers.CharField()
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -43,7 +40,4 @@ class BookSerializer(serializers.ModelSerializer):
             'language',
             'author',
             'publishing_company',
-            'publication_date',
         )
-
-    publication_date = serializers.CharField()
