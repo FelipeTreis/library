@@ -3,13 +3,20 @@ from rest_framework.routers import SimpleRouter
 from rest_framework_simplejwt.views import (TokenObtainPairView,
                                             TokenRefreshView, TokenVerifyView)
 
-from app.api.viewsets import BookViewSet
+from app.api.viewsets import (BookViewSet, CategoryViewSet,
+                              PublishingCompanyViewSet)
 
 app_name = 'app'
 
 router = SimpleRouter()
 router.register(
-    'books', BookViewSet, basename='books'
+    'categories', CategoryViewSet, basename='category'
+)
+router.register(
+    'publishingcompany', PublishingCompanyViewSet, basename='publishingcompany'
+)
+router.register(
+    'books', BookViewSet, basename='book'
 )
 
 urlpatterns = [
