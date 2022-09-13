@@ -1,3 +1,31 @@
 from django.contrib import admin
 
-# Register your models here.
+from app.models import Book, Category, PublishingCompany
+
+
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ('name', )
+    list_display_links = ('name', )
+    list_filter = ('name', )
+    list_per_page = 10
+    search_fields = ('name', )
+
+
+@admin.register(PublishingCompany)
+class PublishingCompanyAdmin(admin.ModelAdmin):
+    list_display = ('name', )
+    list_display_links = ('name', )
+    list_filter = ('name', )
+    list_per_page = 10
+    search_fields = ('name', )
+
+
+@admin.register(Book)
+class BookAdmin(admin.ModelAdmin):
+    list_display = ('is_avaible', 'name', 'state', 'added_at', )
+    list_display_links = ('name', )
+    list_filter = ('name', 'state', 'category', 'publishing_company', )
+    list_editable = ('is_avaible', )
+    list_per_page = 10
+    search_fields = ('name', 'state', 'category', 'publishing_company', )
