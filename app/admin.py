@@ -7,7 +7,7 @@ from app.models import Author, Book, Category, PublishingCompany
 class AuthorAdmin(admin.ModelAdmin):
     list_display = ('full_name', )
     list_display_links = ('full_name', )
-    list_filter = ('full_name', )
+    list_filter = ('name', )
     list_per_page = 10
     search_fields = ('name', 'surname', 'full_name', )
 
