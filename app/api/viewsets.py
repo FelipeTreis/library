@@ -14,6 +14,7 @@ class AuthorViewSet(viewsets.ModelViewSet):
     queryset = Author.objects.all()
     serializer_class = AuthorSerializer
     pagination_class = Pagination
+    search_fields = ['full_name']
 
 
 class CategoryViewSet(viewsets.ModelViewSet):
